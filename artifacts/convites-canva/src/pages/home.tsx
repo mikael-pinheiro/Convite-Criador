@@ -211,27 +211,33 @@ export default function Home() {
 
       <section className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto max-w-5xl text-center">
-          <h2 className="text-3xl font-bold mb-12">Quem comprou, recomenda</h2>
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold mb-3">Quem comprou, recomenda</h2>
+            <p className="text-muted-foreground text-lg">Depoimentos de quem queria algo rápido, bonito e fácil de editar.</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="p-6 text-left border-border/50">
               <div className="flex text-yellow-400 mb-4">
                 <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" />
               </div>
-              <p className="text-sm text-foreground/80 mb-4 font-medium italic">“Simples e rápido”</p>
+              <p className="text-base text-foreground/85 mb-4 font-medium italic">“Eu precisava fazer um convite de aniversário em cima da hora e consegui editar tudo pelo celular. Troquei nome, data e horário e já mandei no WhatsApp no mesmo dia.”</p>
+              <div className="rounded-xl bg-primary/10 text-primary px-3 py-2 text-xs font-extrabold mb-4 inline-block">Simples e rápido</div>
               <p className="text-sm font-bold text-muted-foreground">- Mariana S.</p>
             </Card>
             <Card className="p-6 text-left border-border/50">
               <div className="flex text-yellow-400 mb-4">
                 <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" />
               </div>
-              <p className="text-sm text-foreground/80 mb-4 font-medium italic">“Usei no mesmo dia”</p>
+              <p className="text-base text-foreground/85 mb-4 font-medium italic">“Achei que ia ser difícil porque nunca mexi muito no Canva, mas os modelos já vêm prontos. Só escolhi o convite que combinava com a festa e editei rapidinho.”</p>
+              <div className="rounded-xl bg-primary/10 text-primary px-3 py-2 text-xs font-extrabold mb-4 inline-block">Usei no mesmo dia</div>
               <p className="text-sm font-bold text-muted-foreground">- Juliana P.</p>
             </Card>
             <Card className="p-6 text-left border-border/50">
               <div className="flex text-yellow-400 mb-4">
                 <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" />
               </div>
-              <p className="text-sm text-foreground/80 mb-4 font-medium italic">“Vale muito pelo preço”</p>
+              <p className="text-base text-foreground/85 mb-4 font-medium italic">“O preço é muito bom pela quantidade de artes. Já usei para aniversário, chá de bebê e lembrancinha digital. Para mim valeu muito mais do que pagar alguém para criar do zero.”</p>
+              <div className="rounded-xl bg-primary/10 text-primary px-3 py-2 text-xs font-extrabold mb-4 inline-block">Vale muito pelo preço</div>
               <p className="text-sm font-bold text-muted-foreground">- Renata C.</p>
             </Card>
           </div>
@@ -255,20 +261,48 @@ export default function Home() {
           </Card>
 
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-4">FAQ rápido</h2>
+            <h2 className="text-3xl font-bold mb-4">Dúvidas frequentes</h2>
+            <p className="text-muted-foreground">Clique em cada pergunta para ver como funciona.</p>
           </div>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-left font-bold text-lg">Precisa saber Canva?</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">Não.</AccordionContent>
+              <AccordionContent>
+                <div className="rounded-2xl bg-muted/50 p-4 text-muted-foreground space-y-3">
+                  <p>Você consegue editar mesmo começando do zero. Os convites já estão prontos e organizados.</p>
+                  <div className="grid gap-2 text-sm font-semibold text-foreground">
+                    <div className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-secondary shrink-0 mt-0.5" /> Abra o modelo no Canva</div>
+                    <div className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-secondary shrink-0 mt-0.5" /> Troque nome, data e horário</div>
+                    <div className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-secondary shrink-0 mt-0.5" /> Baixe e envie para seus convidados</div>
+                  </div>
+                </div>
+              </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger className="text-left font-bold text-lg">Funciona no celular?</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">Sim.</AccordionContent>
+              <AccordionContent>
+                <div className="rounded-2xl bg-muted/50 p-4 text-muted-foreground space-y-3">
+                  <p>Sim. Você pode abrir pelo navegador ou aplicativo do Canva e editar direto do celular.</p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="rounded-full bg-background px-3 py-1 text-sm font-bold text-foreground border">Android</span>
+                    <span className="rounded-full bg-background px-3 py-1 text-sm font-bold text-foreground border">iPhone</span>
+                    <span className="rounded-full bg-background px-3 py-1 text-sm font-bold text-foreground border">Computador</span>
+                  </div>
+                </div>
+              </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
               <AccordionTrigger className="text-left font-bold text-lg">Recebo quando?</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">Na hora.</AccordionContent>
+              <AccordionContent>
+                <div className="rounded-2xl bg-muted/50 p-4 text-muted-foreground space-y-3">
+                  <p>O acesso é liberado logo após a confirmação do pagamento.</p>
+                  <div className="grid gap-2 text-sm font-semibold text-foreground">
+                    <div className="flex gap-2"><Zap className="w-4 h-4 text-primary shrink-0 mt-0.5" /> Pagamento confirmado</div>
+                    <div className="flex gap-2"><ArrowRight className="w-4 h-4 text-primary shrink-0 mt-0.5" /> Link de acesso liberado</div>
+                    <div className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-secondary shrink-0 mt-0.5" /> Você já pode editar seus convites</div>
+                  </div>
+                </div>
+              </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
