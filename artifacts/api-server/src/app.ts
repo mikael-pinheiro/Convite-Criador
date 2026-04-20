@@ -1,4 +1,4 @@
-import express, { type Express } from "express";
+import express, { type Express, type RequestHandler } from "express";
 import cors from "cors";
 import pinoHttp from "pino-http";
 import router from "./routes";
@@ -23,7 +23,7 @@ app.use(
         };
       },
     },
-  }),
+  }) as unknown as RequestHandler,
 );
 app.use(cors());
 app.use(express.json());
