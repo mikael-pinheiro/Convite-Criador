@@ -15,7 +15,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background font-sans overflow-x-hidden">
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
+      <div className="fixed top-0 w-full z-[60] bg-red-600 text-white text-center text-xs md:text-sm font-extrabold py-2 px-3 tracking-wide flex items-center justify-center gap-2 shadow-md">
+        <Zap className="w-4 h-4 fill-current animate-pulse" />
+        <span>OFERTA POR TEMPO LIMITADO • Aproveite antes que o preço suba</span>
+        <Zap className="w-4 h-4 fill-current animate-pulse" />
+      </div>
+      <nav className="fixed top-9 md:top-10 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="font-extrabold text-xl tracking-tight text-primary">
             Convites<span className="text-foreground">Fácil</span>
