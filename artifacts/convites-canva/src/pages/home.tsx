@@ -264,15 +264,15 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Gift className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                  <span>Elementos PNG</span>
+                  <span className="flex-1">Elementos PNG <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-destructive/10 text-destructive px-2 py-0.5 rounded-full">Grátis</span> <span className="block text-xs text-muted-foreground line-through">de R$47</span></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Gift className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                  <span>Guia de vendas</span>
+                  <span className="flex-1">Guia de vendas <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-destructive/10 text-destructive px-2 py-0.5 rounded-full">Grátis</span> <span className="block text-xs text-muted-foreground line-through">de R$37</span></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Gift className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                  <span>Artes prontas</span>
+                  <span className="flex-1">Artes prontas <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-destructive/10 text-destructive px-2 py-0.5 rounded-full">Grátis</span> <span className="block text-xs text-muted-foreground line-through">de R$27</span></span>
                 </li>
               </ul>
               <a href={premiumCheckout} className="w-full">
