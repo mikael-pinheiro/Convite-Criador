@@ -176,25 +176,25 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4">
                   <ImageIcon className="w-6 h-6 text-secondary" />
                 </div>
-                <h4 className="font-bold mb-1">Bônus 1 — Elementos PNG</h4>
+                <h4 className="font-bold mb-1">Bônus 1 — Elementos PNG <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-secondary/15 text-secondary px-2 py-0.5 rounded-full">Grátis</span></h4>
                 <p className="text-sm text-muted-foreground mb-3">Centenas de elementos com fundo transparente para deixar seus convites únicos.</p>
-                <span className="text-xs font-extrabold text-destructive">VALOR: R$47</span>
+                <span className="text-xs font-extrabold text-muted-foreground line-through">VALOR: R$47</span>
               </div>
               <div className="rounded-2xl bg-background/80 backdrop-blur p-6 border border-border/60">
                 <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4">
                   <FileText className="w-6 h-6 text-secondary" />
                 </div>
-                <h4 className="font-bold mb-1">Bônus 2 — Guia de vendas</h4>
+                <h4 className="font-bold mb-1">Bônus 2 — Guia de vendas <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-secondary/15 text-secondary px-2 py-0.5 rounded-full">Grátis</span></h4>
                 <p className="text-sm text-muted-foreground mb-3">Passo a passo para você revender os convites e faturar como autônoma.</p>
-                <span className="text-xs font-extrabold text-destructive">VALOR: R$37</span>
+                <span className="text-xs font-extrabold text-muted-foreground line-through">VALOR: R$37</span>
               </div>
               <div className="rounded-2xl bg-background/80 backdrop-blur p-6 border border-border/60">
                 <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4">
                   <Sparkles className="w-6 h-6 text-secondary" />
                 </div>
-                <h4 className="font-bold mb-1">Bônus 3 — Artes prontas</h4>
+                <h4 className="font-bold mb-1">Bônus 3 — Artes prontas <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-secondary/15 text-secondary px-2 py-0.5 rounded-full">Grátis</span></h4>
                 <p className="text-sm text-muted-foreground mb-3">Stories, posts e divulgações prontas para você atrair clientes nas redes.</p>
-                <span className="text-xs font-extrabold text-destructive">VALOR: R$27</span>
+                <span className="text-xs font-extrabold text-muted-foreground line-through">VALOR: R$27</span>
               </div>
             </div>
           </div>
@@ -264,15 +264,15 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Gift className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                  <span className="flex-1">Elementos PNG <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-destructive/10 text-destructive px-2 py-0.5 rounded-full">Grátis</span> <span className="block text-xs text-muted-foreground line-through">de R$47</span></span>
+                  <span className="flex-1">Elementos PNG <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-secondary/15 text-secondary px-2 py-0.5 rounded-full">Grátis</span> <span className="block text-xs text-muted-foreground line-through">de R$47</span></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Gift className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                  <span className="flex-1">Guia de vendas <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-destructive/10 text-destructive px-2 py-0.5 rounded-full">Grátis</span> <span className="block text-xs text-muted-foreground line-through">de R$37</span></span>
+                  <span className="flex-1">Guia de vendas <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-secondary/15 text-secondary px-2 py-0.5 rounded-full">Grátis</span> <span className="block text-xs text-muted-foreground line-through">de R$37</span></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Gift className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                  <span className="flex-1">Artes prontas <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-destructive/10 text-destructive px-2 py-0.5 rounded-full">Grátis</span> <span className="block text-xs text-muted-foreground line-through">de R$27</span></span>
+                  <span className="flex-1">Artes prontas <span className="ml-1 inline-block align-middle text-[10px] font-extrabold uppercase tracking-wide bg-secondary/15 text-secondary px-2 py-0.5 rounded-full">Grátis</span> <span className="block text-xs text-muted-foreground line-through">de R$27</span></span>
                 </li>
               </ul>
               <a href={premiumCheckout} className="w-full">
