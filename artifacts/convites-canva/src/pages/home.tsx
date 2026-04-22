@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Shield, CheckCircle2, Smartphone, Zap, Clock, Star, Gift, X, ArrowRight, PartyPopper, Sparkles, FileText, Image as ImageIcon, Layers, Heart } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Shield, CheckCircle2, Smartphone, Zap, Clock, Star, Gift, X, ArrowRight, PartyPopper, Sparkles, FileText, Image as ImageIcon, Layers, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -10,17 +10,75 @@ const basicCheckout = "https://app.bancobabylon.com/payment/checkout/4e43f606-5d
 const premiumCheckout = "https://app.bancobabylon.com/payment/checkout/8032296c-6214-4c0c-8a1f-082c4d84e58c";
 const premiumOfferCheckout = "https://app.bancobabylon.com/payment/checkout/03de95ee-6aa2-4e0c-8f53-a30d8ecc7071";
 
+const inviteSamples = [
+  { src: "https://i.ibb.co/7xwyMT8v/image.png", label: "Aniversário Infantil" },
+  { src: "https://i.ibb.co/Xfj46X62/image.png", label: "Casamento" },
+  { src: "https://i.ibb.co/sd8VWz0n/image.png", label: "Chá de Bebê" },
+  { src: "https://i.ibb.co/wNxvPPpK/image.png", label: "Aniversário Adulto" },
+  { src: "https://i.ibb.co/tpv9ZJzS/image.png", label: "Debutante" },
+];
+
+const ONE_HOUR = 60 * 60;
+
+function formatTime(total: number) {
+  const h = Math.floor(total / 3600).toString().padStart(2, "0");
+  const m = Math.floor((total % 3600) / 60).toString().padStart(2, "0");
+  const s = Math.floor(total % 60).toString().padStart(2, "0");
+  return { h, m, s };
+}
+
 export default function Home() {
   const [showOffer, setShowOffer] = useState(false);
+  const [secondsLeft, setSecondsLeft] = useState<number>(() => {
+    if (typeof window === "undefined") return ONE_HOUR;
+    const stored = window.localStorage.getItem("urgency-deadline");
+    let deadline = stored ? parseInt(stored, 10) : NaN;
+    if (!deadline || isNaN(deadline) || deadline < Date.now()) {
+      deadline = Date.now() + ONE_HOUR * 1000;
+      window.localStorage.setItem("urgency-deadline", String(deadline));
+    }
+    return Math.max(0, Math.floor((deadline - Date.now()) / 1000));
+  });
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSecondsLeft((prev) => {
+        if (prev <= 1) {
+          const next = Date.now() + ONE_HOUR * 1000;
+          window.localStorage.setItem("urgency-deadline", String(next));
+          return ONE_HOUR;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const scrollCarousel = (dir: "prev" | "next") => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8;
+    el.scrollBy({ left: dir === "next" ? amount : -amount, behavior: "smooth" });
+  };
+
+  const time = formatTime(secondsLeft);
 
   return (
     <div className="min-h-screen bg-background font-sans overflow-x-hidden">
-      <div className="fixed top-0 w-full z-[60] bg-red-600 text-white text-center text-xs md:text-sm font-extrabold py-2 px-3 tracking-wide flex items-center justify-center gap-2 shadow-md">
+      <div className="relative w-full z-[60] bg-red-600 text-white text-center text-xs md:text-sm font-extrabold py-2 px-3 tracking-wide flex items-center justify-center gap-2 md:gap-3 shadow-md flex-wrap">
         <Zap className="w-4 h-4 fill-current animate-pulse" />
-        <span>OFERTA POR TEMPO LIMITADO • Aproveite antes que o preço suba</span>
+        <span>OFERTA TERMINA EM</span>
+        <span className="inline-flex items-center gap-1 font-mono">
+          <span className="bg-black/30 rounded px-1.5 py-0.5 tabular-nums">{time.h}</span>
+          <span>:</span>
+          <span className="bg-black/30 rounded px-1.5 py-0.5 tabular-nums">{time.m}</span>
+          <span>:</span>
+          <span className="bg-black/30 rounded px-1.5 py-0.5 tabular-nums">{time.s}</span>
+        </span>
         <Zap className="w-4 h-4 fill-current animate-pulse" />
       </div>
-      <nav className="fixed top-9 md:top-10 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
+      <nav className="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="font-extrabold text-xl tracking-tight text-primary">
             Convites<span className="text-foreground">Fácil</span>
@@ -33,7 +91,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-4 bg-hero-pattern">
+      <section className="pt-12 pb-20 px-4 bg-hero-pattern">
         <div className="container mx-auto max-w-6xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -51,7 +109,7 @@ export default function Home() {
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto font-medium">
-              Crie Convites Profissionais em Menos de 5 Minutos
+              Edite em minutos direto pelo celular, mesmo sem saber design.
             </p>
 
             <motion.div
@@ -202,6 +260,58 @@ export default function Home() {
                 <span className="text-xs font-extrabold text-muted-foreground line-through">VALOR: R$27</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-muted/20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold mb-4 border border-primary/20">
+              <Sparkles className="w-4 h-4" /> Exemplos de convites
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-3">Veja alguns convites que você vai receber</h2>
+            <p className="text-muted-foreground text-lg">Arraste para o lado e veja a qualidade das artes prontas para editar.</p>
+          </div>
+
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => scrollCarousel("prev")}
+              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 w-11 h-11 items-center justify-center rounded-full bg-background shadow-lg border border-border hover:bg-muted transition"
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <div
+              ref={carouselRef}
+              className="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {inviteSamples.map((item) => (
+                <div
+                  key={item.src}
+                  className="snap-center shrink-0 w-[78%] sm:w-[48%] md:w-[32%] lg:w-[24%]"
+                >
+                  <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border/60 bg-card aspect-[3/4]">
+                    <img
+                      src={item.src}
+                      alt={item.label}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="mt-3 text-center text-sm font-bold text-foreground">{item.label}</p>
+                </div>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => scrollCarousel("next")}
+              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 w-11 h-11 items-center justify-center rounded-full bg-background shadow-lg border border-border hover:bg-muted transition"
+              aria-label="Próximo"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
