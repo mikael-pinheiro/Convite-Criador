@@ -300,7 +300,6 @@ export default function Home() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <p className="mt-3 text-center text-sm font-bold text-foreground">{item.label}</p>
                 </div>
               ))}
             </div>
